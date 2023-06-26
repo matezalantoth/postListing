@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.1.1'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'commons-io:commons-io:2.11.0'
+    implementation 'org.json:json:20230227'
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+    tasks.withType(Test) {
+        jvmArgs '-Dfile.encoding=UTF-8'
+    }
+    implementation("org.seleniumhq.selenium:selenium-java:4.9.0")
+    implementation("org.seleniumhq.selenium:selenium-chrome-driver:4.9.0")
+    implementation("com.opencsv:opencsv:5.7.1")
+    implementation('org.springframework.boot:spring-boot-starter-webflux')
+    implementation('com.pusher:pusher-java-client:2.4.4')
+    implementation('commons-codec:commons-codec:1.15')
+}
+
+test {
+    useJUnitPlatform()
+}
